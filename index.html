@@ -21,14 +21,57 @@
         <input type="password" name="pass" placeholder="senha" />
       </div>
       <div>
-        <button type="button">Recuperar Senha</button>
+        <button type="button" class="clear">Recuperar Senha</button>
       </div>
       <div>
-        <button type="button">Entrar</button>
+        <button type="button" class="solid">Entrar</button>
       </div>
       <div>
-        <button type="but">Registrar</button>
+        <button type="button" class="outline">Registrar</button>
       </div>
     </form>
   </body>
+  <style>
+    body {
+      background: darkgreen;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      width: 300px;
+    }
+    input {
+      border: none;
+    }
+    input,
+    button {
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    button {
+      cursor: pointer;
+      width: 108%;
+    }
+    button:active {
+      opacity: 0.8;
+    }
+    .clear {
+      background: transparent;
+      border: none;
+      color: white;
+    }
+    .solid {
+      background: white;
+      border: none;
+      color: darkgreen;
+    }
+    .outline {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+    }
+  </style>
 </html>
