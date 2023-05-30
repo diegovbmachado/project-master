@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loguin - Controle de gastos</title>
+    <title>Login - Controle de gastos</title>
   </head>
   <body>
     <form>
@@ -12,21 +12,40 @@
         <div>
           <label>Email:</label>
         </div>
-        <input type="email" name="email" placeholder="seu@email.com" />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          onchange="validateFields()"
+          placeholder="seu@email.com"
+        />
       </div>
       <div>
         <div>
-          <label>senha:</label>
+          <label>Senha:</label>
         </div>
-        <input type="password" name="pass" placeholder="senha" />
+        <input
+          type="password"
+          name="pass"
+          id="password"
+          onchange="validateFields()"
+          placeholder="senha"
+        />
       </div>
       <div>
-        <button type="button" class="clear" disabled="true">
+        <button
+          type="button"
+          class="clear"
+          id="recover-password-button"
+          disabled
+        >
           Recuperar Senha
         </button>
       </div>
       <div>
-        <button type="button" class="solid" disabled="true">Entrar</button>
+        <button type="button" class="solid" id="loguin-button" disabled>
+          Entrar
+        </button>
       </div>
       <div>
         <button type="button" class="outline">Registrar</button>
@@ -34,4 +53,5 @@
     </form>
   </body>
   <link rel="stylesheet" href="index.css" />
+  <script src="index.js"></script>
 </html>
