@@ -1,16 +1,20 @@
-function validateFields() {
+function onChangeEmail() {
   toggleEmaiErrors();
   toggleButtonsDisable();
-  togglePasswordErrors();
-  // const email = document.getElementById("email").value;
-  // if (!email) {
-  //   document.getElementById("recover-password-button").disabled = true;
-  // } else if (validateEmail(email)) {
-  //   document.getElementById("recover-password-button").disabled = false;
-  // } else if (validateEmail(email)) {
-  //   document.getElementById("recover-password-button").disabled = true;
-  // }
 }
+function onChangePassword() {
+  togglePasswordErrors();
+  toggleButtonsDisable();
+}
+// const email = document.getElementById("email").value;
+// if (!email) {
+//   document.getElementById("recover-password-button").disabled = true;
+// } else if (validateEmail(email)) {
+//   document.getElementById("recover-password-button").disabled = false;
+// } else if (validateEmail(email)) {
+//   document.getElementById("recover-password-button").disabled = true;
+// }
+
 function isEmailValid() {
   const email = document.getElementById("email").value;
   if (!email) {
@@ -32,14 +36,13 @@ function toggleEmaiErrors() {
   }
 }
 
-function togglePasswordErrors(){
-    const password = document.getElementById("password").value;
-    if(!password){
-        document.getElementById("password-required-error").style.display = "block";  
-    }else {
-        document.getElementById("password-required-error").style.display = "none"; 
-    }
-
+function togglePasswordErrors() {
+  const password = document.getElementById("password").value;
+  if (!password) {
+    document.getElementById("password-required-error").style.display = "block";
+  } else {
+    document.getElementById("password-required-error").style.display = "none";
+  }
 }
 function toggleButtonsDisable() {
   const emailValid = isEmailValid();
