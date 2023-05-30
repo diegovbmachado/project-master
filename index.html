@@ -19,6 +19,8 @@
           onchange="validateFields()"
           placeholder="seu@email.com"
         />
+        <div class="error" id="email-required-error">Email é obrigatório</div>
+        <div class="error" id="email-invalid-error">Email é inválido</div>
       </div>
       <div>
         <div>
@@ -31,6 +33,9 @@
           onchange="validateFields()"
           placeholder="senha"
         />
+        <div class="error" id="password-required-error">
+          Senha é obrigatória
+        </div>
       </div>
       <div>
         <button
