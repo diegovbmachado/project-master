@@ -7,6 +7,13 @@ function onChangePassword() {
   toggleButtonsDisable();
 }
 
+function login() {
+  window.location.href = "pages/home/home.html";
+}
+function register() {
+  window.location.href = "pages/register/register.html";
+}
+
 function isEmailValid() {
   const email = from.email().value;
   if (!email) {
@@ -23,7 +30,7 @@ function toggleEmaiErrors() {
   // } else {
   //   from.emailRequiredError().style.display = "none";
   // }
-  from.emailInvalidError().style.displa = validateEmail(email)
+  from.emailInvalidError().style.display = validateEmail(email)
     ? "none"
     : "block";
   //oque esta acima, faz exatamente oque esta a baixo, genial!
@@ -49,7 +56,7 @@ function toggleButtonsDisable() {
   from.recoverPassword().disabled = !emailValid;
 
   const passwordValid = isPasswordValid();
-  from.loguinButton().disabled = !emailValid || !passwordValid;
+  from.loginButton().disabled = !emailValid || !passwordValid;
 }
 
 function isPasswordValid() {
@@ -65,7 +72,7 @@ const from = {
   password: () => document.getElementById("password"),
   passwordRequiredError: () =>
     document.getElementById("password-required-error"),
-  loguinButton: () => document.getElementById("loguin-button"),
+  loginButton: () => document.getElementById("login-button"),
   recoverPassword: () => document.getElementById("recover-password-button"),
   emailInvalidError: () => document.getElementById("email-invalid-error"),
   emailRequiredError: () => document.getElementById("email-required-error"),
