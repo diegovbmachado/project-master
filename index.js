@@ -18,8 +18,17 @@ function login() {
     })
     .catch((error) => {
       console.log("error", error);
+      alert(getErrorMessage(error));
     });
 }
+
+function getErrorMessage(error) {
+  if (error.code == "auth/wrong-password") {
+    return "Usuário não encontrado";
+  }
+  return error.message;
+}
+
 function register() {
   window.location.href = "pages/register/register.html";
 }
