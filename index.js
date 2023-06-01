@@ -8,7 +8,17 @@ function onChangePassword() {
 }
 
 function login() {
-  window.location.href = "pages/home/home.html";
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((response) => {
+      window.location.href = "pages/home/home.html";
+    })
+    .catch((error) => {
+      console.log("error", error);
+    });
 }
 function register() {
   window.location.href = "pages/register/register.html";

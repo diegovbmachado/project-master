@@ -81,16 +81,18 @@
       appId: "1:1049997118098:web:0f4245c9dc4019450b344b",
     };
     firebase.initializeApp(firebaseConfig);
-    console.log("antes");
-    firebase
-      .auth()
-      .singInWithEmailAndPassword("any@email.com", "12345678")
-      .then((response) => {
-        console.log("sucesso", response);
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
-    console.log("depois");
+    //essa parte de baixo serviu como teste pra verificar se estava funcionando sistema de login,
+    //no caso buscar e verificar ele no firebases.
+    // console.log("antes");
+    // firebase
+    //   .auth()
+    //   .signInWithEmailAndPassword("diegogatao21@gmail.com", "24584558@@")
+    //   .then((response) => {
+    //     console.log("sucesso", response);
+    //   })
+    //   .catch((error) => {
+    //     console.log("error", error);
+    //   });
+    // console.log("depois");
   </script>
 </html>
