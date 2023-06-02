@@ -1,6 +1,6 @@
 body {
   background: darkgreen;
- 
+  height: 100vh;
 }
 form {
   width: 300px;
