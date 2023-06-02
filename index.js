@@ -30,7 +30,8 @@ function getErrorMessage(error) {
 }
 
 function register() {
-  window.location.href = "pages/register/register.html";
+  showLoading();
+  // window.location.href = "pages/register/register.html";
 }
 
 function isEmailValid() {
