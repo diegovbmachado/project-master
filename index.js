@@ -8,15 +8,18 @@ function onChangePassword() {
 }
 
 function login() {
+  showLoading();
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then((response) => {
+      hideLoading();
       window.location.href = "pages/home/home.html";
     })
     .catch((error) => {
+      hideLoading();
       console.log("error", error);
       alert(getErrorMessage(error));
     });
@@ -30,8 +33,7 @@ function getErrorMessage(error) {
 }
 
 function register() {
-  showLoading();
-  // window.location.href = "pages/register/register.html";
+  window.location.href = "pages/register/register.html";
 }
 
 function isEmailValid() {

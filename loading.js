@@ -7,7 +7,7 @@ function showLoading() {
   div.appendChild(label);
   document.body.appendChild(div);
 
-  setTimeout(() => hideLoading(), 2000);
+//   setTimeout(() => hideLoading(), 2000);
 }
 
 function hideLoading() {
