@@ -36,6 +36,10 @@ function register() {
   window.location.href = "pages/register/register.html";
 }
 
+function recoverPassword(){
+  
+}
+
 function isEmailValid() {
   const email = from.email().value;
   if (!email) {
