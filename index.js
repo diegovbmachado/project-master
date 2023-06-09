@@ -43,7 +43,7 @@ function recoverPassword() {
   showLoading();
   firebase
     .auth()
-    .sendPasswordResetEmail(from.email().value)
+    .sendPasswordResetEmail(form.email().value)
     .then(() => {
       hideLoading();
       alert("Email enviado com sucesso!");
@@ -55,59 +55,59 @@ function recoverPassword() {
 }
 
 function isEmailValid() {
-  const email = from.email().value;
+  const email = form.email().value;
   if (!email) {
     return false;
   }
   return validateEmail(email);
 }
 function toggleEmaiErrors() {
-  const email = from.email().value;
-  from.emailRequiredError().style.display = email ? "none" : "block";
+  const email = form.email().value;
+  form.emailRequiredError().style.display = email ? "none" : "block";
   //oque esta acima, faz exatamente oque esta a baixo, genial!
   // if (!email) {
-  //   from.emailRequiredError().style.display = "block";
+  //   form.emailRequiredError().style.display = "block";
   // } else {
-  //   from.emailRequiredError().style.display = "none";
+  //   form.emailRequiredError().style.display = "none";
   // }
-  from.emailInvalidError().style.display = validateEmail(email)
+  form.emailInvalidError().style.display = validateEmail(email)
     ? "none"
     : "block";
   //oque esta acima, faz exatamente oque esta a baixo, genial!
   // if (validateEmail(email)) {
-  //   from.emailInvalidError().style.display = "none";
+  //   form.emailInvalidError().style.display = "none";
   // } else {
-  //   from.emailInvalidError().style.display = "block";
+  //   form.emailInvalidError().style.display = "block";
   // }
 }
 
 function togglePasswordErrors() {
-  const password = from.password().value;
+  const password = form.password().value;
 
-  from.passwordRequiredError().style.display = password ? "none" : "block";
+  form.passwordRequiredError().style.display = password ? "none" : "block";
   // if (!password) {
-  //   from.passwordRequiredError().style.display = "block";
+  //   form.passwordRequiredError().style.display = "block";
   // } else {
-  //   from.passwordRequiredError().style.display = "none";
+  //   form.passwordRequiredError().style.display = "none";
   // }
 }
 function toggleButtonsDisable() {
   const emailValid = isEmailValid();
-  from.recoverPassword().disabled = !emailValid;
+  form.recoverPassword().disabled = !emailValid;
 
   const passwordValid = isPasswordValid();
-  from.loginButton().disabled = !emailValid || !passwordValid;
+  form.loginButton().disabled = !emailValid || !passwordValid;
 }
 
 function isPasswordValid() {
-  const password = from.password().value;
+  const password = form.password().value;
   if (!password) {
     return false;
   }
   return true;
 }
 
-const from = {
+const form = {
   email: () => document.getElementById("email"),
   password: () => document.getElementById("password"),
   passwordRequiredError: () =>
