@@ -3,11 +3,11 @@ function showLoading() {
   div.classList.add("loading", "centralize");
 
   const label = document.createElement("label");
-  label.innerText = "Carregango...";
+  label.innerText = "Carregando...";
   div.appendChild(label);
   document.body.appendChild(div);
 
-//   setTimeout(() => hideLoading(), 2000);
+  //   setTimeout(() => hideLoading(), 2000);
 }
 
 function hideLoading() {

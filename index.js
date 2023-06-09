@@ -29,6 +29,9 @@ function getErrorMessage(error) {
   if (error.code == "auth/wrong-password") {
     return "Usuário não encontrado";
   }
+  if (error.code == "auth/user-not-found") {
+    return "Senha inválida";
+  }
   return error.message;
 }
 
@@ -36,8 +39,19 @@ function register() {
   window.location.href = "pages/register/register.html";
 }
 
-function recoverPassword(){
-  
+function recoverPassword() {
+  showLoading();
+  firebase
+    .auth()
+    .sendPasswordResetEmail(from.email().value)
+    .then(() => {
+      hideLoading();
+      alert("Email enviado com sucesso!");
+    })
+    .catch((error) => {
+      hideLoading();
+      alert(getErrorMessage(error));
+    });
 }
 
 function isEmailValid() {
