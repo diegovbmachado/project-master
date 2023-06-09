@@ -46,8 +46,12 @@ button[disabled] {
 .form-field {
   margin-bottom: 10px;
 }
-input,
 button {
+  padding: 10px;
+
+  width: 107%;
+}
+input {
   padding: 10px;
 
   width: 100%;
