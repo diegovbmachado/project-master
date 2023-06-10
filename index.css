@@ -1,5 +1,4 @@
 body {
-  background: darkgreen;
   height: 100vh;
 }
 form {
@@ -15,9 +14,9 @@ button {
   width: 108%;
 }
 
-.error {
+/* .error {
   color: white;
   background: red;
   display: none;
   width: 107%;
-}
+} */
