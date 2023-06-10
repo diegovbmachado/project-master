@@ -3,7 +3,6 @@ firebase.auth().onAuthStateChanged((user) => {
     window.location.href = "../home/home.html";
   }
 });
-
 function onChangeEmail() {
   const email = form.email().value;
   form.emailRequiredError().style.display = email ? "none" : "block";
