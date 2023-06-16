@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <meta charset="UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Controle de gastos</title>
+    <title>Controle de gastos</title>
   </head>
   <body class="centralize">
     <form>
@@ -16,8 +13,8 @@
           type="email"
           name="email"
           id="email"
-          onchange="onChangeEmail()"
           placeholder="seu@email.com"
+          onchange="onChangeEmail()"
         />
         <div class="error" id="email-required-error">Email é obrigatório</div>
         <div class="error" id="email-invalid-error">Email é inválido</div>
@@ -28,10 +25,10 @@
         </div>
         <input
           type="password"
-          name="pass"
+          name="password"
           id="password"
-          onchange="onChangePassword()"
           placeholder="senha"
+          onchange="onChangePassword()"
         />
         <div class="error" id="password-required-error">
           Senha é obrigatória
@@ -43,7 +40,7 @@
           class="clear"
           id="recover-password-button"
           onclick="recoverPassword()"
-          disabled
+          disabled="true"
         >
           Recuperar Senha
         </button>
@@ -53,14 +50,14 @@
           type="button"
           class="solid"
           id="login-button"
-          disabled
+          disabled="true"
           onclick="login()"
         >
           Entrar
         </button>
       </div>
       <div>
-        <button type="button" class="outline" onclick=" register();">
+        <button type="button" class="outline" onclick="register()">
           Registrar
         </button>
       </div>
@@ -75,7 +72,7 @@
   <script src="index.js"></script>
   <script src="validations.js"></script>
   <script src="loading.js"></script>
-  <!-- <script>
+  <script>
     // const firebaseConfig = {
     //   apiKey: "AIzaSyA7kZeiiaOWR_iTEQXNG8WNHa4e3YNBSjk",
     //   authDomain: "controle-de-gastos-de472.firebaseapp.com",
@@ -98,5 +95,5 @@
     //     console.log("error", error);
     //   });
     // console.log("depois");
-  </script> -->
+  </script>
 </html>
