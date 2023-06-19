@@ -37,7 +37,7 @@ function recoverPassword() {
   showLoading();
   firebase
     .auth()
-    .sendPasswordResetEmail(form.email().value)
+    .sendPasswordResetEmail(form.password.value)
     .then(() => {
       hideLoading();
       alert("Email enviado com sucesso");
