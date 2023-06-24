@@ -4,16 +4,16 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
-// function onChangeEmail() {
-//   const email = form.email().value;
-//   form.emailRequiredError().style.display = email ? "none" : "block";
+function onChangeEmail() {
+  const email = form.email().value;
+  form.emailRequiredError().style.display = email ? "none" : "block";
 
-//   form.emailInvalidError().style.display = validateEmail(email)
-//     ? "none"
-//     : "block";
+  form.emailInvalidError().style.display = validateEmail(email)
+    ? "none"
+    : "block";
 
-//   toggleRegisterButtonDisable();
-// }
+  toggleRegisterButtonDisable();
+}
 
 function onChangePassword() {
   const password = form.password().value;

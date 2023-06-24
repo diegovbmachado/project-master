@@ -27,6 +27,11 @@ function findTransactions(user) {
       hideLoading();
       const transaction = snapshot.docs.map((doc) => doc.data());
       addTransactionsToScreen(transaction);
+    })
+    .catch((error) => {
+      hideLoading();
+      console.log(error);
+      alert("Erro ao recuperar transacoes");
     });
 }
 
