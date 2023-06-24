@@ -9,14 +9,22 @@ function logout() {
       alert("Erro ao fazer logout");
     });
 }
-findTransactions();
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    findTransactions(user);
+  }
+});
 
-function findTransactions() {
+function findTransactions(user) {
+  showLoading();
   firebase
     .firestore()
     .collection("transactions")
+    .where("user.uid", "==", user.uid)
+    .orderBy("date", "desc")
     .get()
     .then((snapshot) => {
+      hideLoading();
       const transaction = snapshot.docs.map((doc) => doc.data());
       addTransactionsToScreen(transaction);
     });
