@@ -12,9 +12,14 @@ function logout() {
 findTransactions();
 
 function findTransactions() {
-  setTimeout(() => {
-    addTransactionsToScreen(fakeTransactions);
-  }, 1000);
+  firebase
+    .firestore()
+    .collection("transactions")
+    .get()
+    .then((snapshot) => {
+      const transaction = snapshot.docs.map((doc) => doc.data());
+      addTransactionsToScreen(transaction);
+    });
 }
 
 function addTransactionsToScreen(transactions) {
