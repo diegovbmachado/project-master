@@ -91,7 +91,7 @@ select {
   width: 107%;
 }
 input[type="radio"] {
-  width: 100%;
+  width: auto;
 }
 input[type="date"] {
   width: 98%;
