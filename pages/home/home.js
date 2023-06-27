@@ -9,11 +9,13 @@ function logout() {
       alert("Erro ao fazer logout");
     });
 }
+
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     findTransactions(user);
   }
 });
+
 function newTransaction() {
   window.location.href = "../transaction/transaction.html";
 }
@@ -28,8 +30,11 @@ function findTransactions(user) {
     .get()
     .then((snapshot) => {
       hideLoading();
-      const transaction = snapshot.docs.map((doc) => doc.data());
-      addTransactionsToScreen(transaction);
+      const transactions = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        uid: doc.id,
+      }));
+      addTransactionsToScreen(transactions);
     })
     .catch((error) => {
       hideLoading();
@@ -44,6 +49,20 @@ function addTransactionsToScreen(transactions) {
   transactions.forEach((transaction) => {
     const li = document.createElement("li");
     li.classList.add(transaction.type);
+    li.id = transaction.uid;
+    li.addEventListener("click", () => {
+      window.location.href =
+        "../transaction/transaction.html?uid=" + transaction.uid;
+    });
+
+    const deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Remover";
+    deleteButton.classList.add("outline", "danger");
+    deleteButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      askRemoveTransaction(transaction);
+    });
+    li.appendChild(deleteButton);
 
     const date = document.createElement("p");
     date.innerHTML = formatDate(transaction.date);
@@ -67,6 +86,32 @@ function addTransactionsToScreen(transactions) {
   });
 }
 
+function askRemoveTransaction(transaction) {
+  const shouldRemove = confirm("Deseja remover a transaçao?");
+  if (shouldRemove) {
+    removeTransaction(transaction);
+  }
+}
+
+function removeTransaction(transaction) {
+  showLoading();
+
+  firebase
+    .firestore()
+    .collection("transactions")
+    .doc(transaction.uid)
+    .delete()
+    .then(() => {
+      hideLoading();
+      document.getElementById(transaction.uid).remove();
+    })
+    .catch((error) => {
+      hideLoading();
+      console.log(error);
+      alert("Erro ao remover transaçao");
+    });
+}
+
 function formatDate(date) {
   return new Date(date).toLocaleDateString("pt-br");
 }
@@ -74,45 +119,3 @@ function formatDate(date) {
 function formatMoney(money) {
   return `${money.currency} ${money.value.toFixed(2)}`;
 }
-
-const fakeTransactions = [
-  {
-    type: "expense",
-    date: "2022-01-04",
-    money: {
-      currency: "R$",
-      value: 10,
-    },
-    transactionType: "Supermercado",
-  },
-  {
-    type: "income",
-    date: "2022-01-03",
-    money: {
-      currency: "R$",
-      value: 5000,
-    },
-    transactionType: "Salário",
-    description: "Empresa A",
-  },
-  {
-    type: "expense",
-    date: "2022-01-01",
-    money: {
-      currency: "EUR",
-      value: 10,
-    },
-    transactionType: "Transporte",
-    description: "Metrô ida e volta",
-  },
-  {
-    type: "expense",
-    date: "2022-01-01",
-    money: {
-      currency: "USD",
-      value: 600,
-    },
-    transactionType: "Aluguel",
-    description: "Mensalidade",
-  },
-];
